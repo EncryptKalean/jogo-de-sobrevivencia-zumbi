@@ -7,16 +7,23 @@ O objetivo principal é explorar os limites dessas três linguagens e aprender n
 
 ## 🎮 Sobre o jogo
 
-Você controla um personagem que precisa sobreviver ao ataque contínuo de zumbis. O jogo conta com:
+Você controla um personagem que precisa sobreviver ao ataque contínuo de zumbis. 
+O jogo conta com:
 
-- ✅ Movimentação do player  
-- ✅ Sistema de vida do player  
-- ✅ Geração (spawn) de inimigos  
-- ✅ Movimentação, ataque e vida dos inimigos  
-- ✅ Contagem de dano (para player e inimigos)  
-- ✅ Contador de inimigos vivos  
-
-Tudo feito manualmente, sem copiar códigos prontos.
+- ✅ Movimentação do player
+- ✅ Sistema de vida do player
+- ✅ Geração (spawn) de inimigos
+- ✅ Movimentação, ataque e vida dos inimigos
+- ✅ Contagem de dano (player e inimigos)
+- ✅ Contador de inimigos vivos
+- ✅ Limitação da área de movimentação
+- ✅ Suporte a teclas W.A.S.D e setas do teclado
+- ✅ Sistema de sprites e animações
+- ✅ Zumbis rotacionam na direção do player (Math.atan2 FTW!)
+- ✅ Novo sistema de verificação de teclas pressionadas
+- ✅ “Câmera” que acompanha o player pelo mapa
+- ✅ Colisão com paredes (player e zumbis)
+- ✅ Safe zone com porta funcional
 
 
 ## 📷 Screenshot
@@ -24,17 +31,18 @@ Tudo feito manualmente, sem copiar códigos prontos.
 ![Preview do jogo](https://github.com/EncryptKalean/jogo-de-sobrevivencia-zumbi/blob/main/screenshot.png?raw=true)
 
 
+## 🕹️ Controles
+
+W / A / S / D ou Setas – Movimentação
+
+Espaço ou Enter – Disparo
+
+
 ## 🚧 Status do projeto
 
 > 🔨 **Em desenvolvimento** — Esse projeto está sendo desenvolvido como um desafio pessoal, em pequenas etapas, documentadas diariamente.
 
 https://encryptkalean.github.io/jogo-de-sobrevivencia-zumbi/
-
-Controles:
-- W.A.S.D - Movimentação
-- Espaço ou Enter - Disparo
-
---
 
 
 ## 📌 Objetivo do projeto
