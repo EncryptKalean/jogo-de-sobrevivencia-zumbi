@@ -2,28 +2,32 @@
 
 Este é um projeto pessoal de um jogo de sobrevivência com zumbis, feito do zero utilizando apenas **HTML**, **CSS** e **JavaScript puro** — sem bibliotecas externas, motores gráficos ou frameworks.
 
-O objetivo principal é explorar os limites dessas três linguagens e aprender no processo, sempre escrevendo o código por conta própria.
+O objetivo é explorar os limites dessas três linguagens, aprendendo na prática e desenvolvendo todas as mecânicas por conta própria.
 
 
 ## 🎮 Sobre o jogo
 
-Você controla um personagem que precisa sobreviver ao ataque contínuo de zumbis. 
-O jogo conta com:
+Você controla um personagem que precisa sobreviver a hordas de zumbis cada vez mais fortes. O jogo conta com diversas funcionalidades já implementadas:
 
 - ✅ Movimentação do player
 - ✅ Sistema de vida do player
 - ✅ Geração (spawn) de inimigos
 - ✅ Movimentação, ataque e vida dos inimigos
-- ✅ Contagem de dano (player e inimigos)
+- ✅ Contador de dano (player e inimigos)
 - ✅ Contador de inimigos vivos
 - ✅ Limitação da área de movimentação
-- ✅ Suporte a teclas W.A.S.D e setas do teclado
-- ✅ Sistema de sprites e animações
-- ✅ Zumbis rotacionam na direção do player (Math.atan2 FTW!)
-- ✅ Novo sistema de verificação de teclas pressionadas
+- ✅ Suporte a teclas W, A, S, D e setas do teclado
+- ✅ Sistema de sprites e animações (temporários)
+- ✅ Zumbis rotacionam na direção do player (Math.atan2)
+- ✅ Nova lógica para verificação de teclas pressionadas
 - ✅ “Câmera” que acompanha o player pelo mapa
-- ✅ Colisão com paredes (player e zumbis)
+- ✅ Colisão com paredes (player e inimigos)
 - ✅ Safe zone com porta funcional
+- ✅ Sistema de pontuação
+- ✅ Sistema de munição
+- ✅ Sistema de loja (use seus pontos para upgrades!)
+- ✅ Arma nova adicionada
+- ✅ Sistema de rounds — zumbis ficam mais fortes com o tempo
 
 
 ## 📷 Screenshot

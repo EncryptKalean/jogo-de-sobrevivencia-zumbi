@@ -2,6 +2,12 @@ const teclas = {};
 const camera = document.querySelector('.camera')
 document.addEventListener('keydown', (tecla) => { teclas[tecla.key] = true })
 
+var dano_arma = 1
+
+var municao_texto = document.getElementById('municao_atual')
+var municao_max_texto = document.getElementById('municao_max')
+
+var pode_atirar = false
 
 // Movimentação e limitações
 
@@ -16,7 +22,7 @@ setInterval(() => {
     */
 
     if (player_top > (camera.clientHeight / 2) - player.clientHeight &&
-        player_top < limite_do_mapa - (camera.clientHeight / 2)) {
+        player_top < mapa_Height - (camera.clientHeight / 2)) {
         camera.style.top = `${player_top}px`
     }
 
@@ -33,7 +39,7 @@ setInterval(() => {
 
     if (player_top > 0 &&
         player_left > 0 &&
-        player_top < limite_do_mapa &&
+        player_top < mapa_Height &&
         player_left < limite_do_mapa - 100) {
 
         player_rotate = +window.getComputedStyle(player).rotate.split('deg')[0];
@@ -88,7 +94,7 @@ setInterval(() => {
             teclas["a"] || teclas['ArrowLeft'] ||
             teclas["d"] || teclas['ArrowRight']) {
 
-            player.classList.add('andando')
+            player.style.background = `url('src/assets/player_andando_${arma_equipada}.webp') center / contain no-repeat`
         }
     }
 
@@ -102,8 +108,8 @@ setInterval(() => {
         player.style.top = `10px`
     }
 
-    if (player_top >= limite_do_mapa - player_tamanho) {
-        player.style.top = `${limite_do_mapa - (player_tamanho + 5)}px`
+    if (player_top >= mapa_Height - player_tamanho) {
+        player.style.top = `${mapa_Height - (player_tamanho + 5)}px`
     }
 
     if (player_left <= 0) {
@@ -113,18 +119,26 @@ setInterval(() => {
     if (player_left >= limite_do_mapa - 100) {
         player.style.left = `${limite_do_mapa - 150}px`
     }
+
+
+    /*
+        Define que o player só pode atirar depois que sair da safe-zone
+    */
+
+    if (player_left <= parede_largura &&
+        player_top <= parede_altura) {
+        pode_atirar = false
+    }
+    else { pode_atirar = true }
 }, 90)
-
-
-setInterval(() => {
-    // Remove animação
-    player.classList.remove('andando')
-}, 1000)
 
 
 // Spawn do Tiro e rotação
 
 document.addEventListener('keyup', (tecla) => {
+    // Remove animação
+    player.style.background = `url('src/assets/player_parado_${arma_equipada}.webp') center / contain no-repeat`
+
     player_height = +window.getComputedStyle(player).height.split('px')[0];
 
     const div = document.createElement('div')
@@ -138,26 +152,47 @@ document.addEventListener('keyup', (tecla) => {
         delete teclas[tecla_solta]
     }
 
-    if (tecla_solta === "Enter" || tecla_solta === " ") {
 
-        document.body.scrollTop + 1000
+    // Pistola
 
-        document.body.appendChild(div).style.rotate = `${player_rotate}deg`
+    if (arma_equipada == 'pistola' && cartucho > 0 && pode_atirar) {
+        dano_arma = armas_dano['pistola_dano']
+        if (tecla_solta === "Enter" || tecla_solta === " ") {
 
-        // Esses if aqui em baixo serve para mudar o ponto em que a bala é criado. Assim sempre vai dar a impressão de que a bala sai do cano da arma
+            document.body.appendChild(div).style.rotate = `${player_rotate}deg`
 
-        if (player_rotate < 180 && player_rotate >= 0 || player_rotate > 270 && player_rotate < 360) {
-            // Direita e Baixo
-            div.style.top = `${player_top + (player_height * 0.75)}px`
-            div.style.left = `${player_left + (player_height * 0.25)}px`
-        }
+            cartucho--
 
-        if (player_rotate >= 180 && player_rotate <= 270) {
-            // Esquerda e Cima
-            div.style.top = `${player_top + (player_height * 0.25)}px`
-            div.style.left = `${player_left + (player_height * 0.75)}px`
+            // Esses ifs servem para mudar o ponto de origem da criação da bala. Assim sempre vai dar a impressão de que a bala sai do cano da arma
+
+            if (player_rotate < 180 && player_rotate >= 0 || player_rotate > 270 && player_rotate < 360) {
+                // Direita e Baixo
+                div.style.top = `${player_top + (player_height * 0.75)}px`
+                div.style.left = `${player_left + (player_height * 0.30)}px`
+            }
+
+            if (player_rotate >= 180 && player_rotate <= 270) {
+                // Esquerda e Cima
+                div.style.top = `${player_top + (player_height * 0.20)}px`
+                div.style.left = `${player_left + (player_height * 0.80)}px`
+            }
         }
     }
+
+
+    // Recarregar
+    if (arma_equipada == 'pistola') {
+        if (tecla_solta === 'r' && cartucho <= 0 && armas_maximo['pistola_maximo'] > 0) {
+            cartucho = armas_cartucho['pistola_cartucho']
+            armas_maximo['pistola_maximo'] = armas_maximo['pistola_maximo'] - armas_cartucho['pistola_cartucho']
+            municao_texto.textContent = armas_cartucho['pistola_cartucho']
+
+        }
+
+        municao_texto.textContent = cartucho
+        municao_max_texto.textContent = armas_maximo['pistola_maximo']
+    }
+
 })
 
 
@@ -196,27 +231,52 @@ setInterval(() => {
 
             // Destroi ao sair do mapa
 
-            if (tiro_left >= limite_do_mapa ||
-                tiro_top >= limite_do_mapa ||
+            if (tiro_left >= mapa_Width ||
+                tiro_top >= mapa_Height ||
                 tiro_left < 0 ||
-                tiro_top < 0) {
+                tiro_top < 0 ||
+                tiro_left <= parede_largura &&
+                tiro_top <= parede_altura) {
                 tiro.parentNode.removeChild(tiro)
             }
+
 
             // Verifica se atingiu algum zumbi
 
             zumbisArray.forEach((zumbi) => {
-                let area = tiro.getBoundingClientRect();
-                let areaE = zumbi.getBoundingClientRect();
+                let hitBox_tiro = tiro.getBoundingClientRect();
+                let hitBox_zumbi = zumbi.getBoundingClientRect();
 
-                if (area.left < areaE.right &&
-                    area.right > areaE.left &&
-                    area.top < areaE.bottom &&
-                    area.bottom > areaE.top) {
+                if (hitBox_tiro.left < hitBox_zumbi.right &&
+                    hitBox_tiro.right > hitBox_zumbi.left &&
+                    hitBox_tiro.top < hitBox_zumbi.bottom &&
+                    hitBox_tiro.bottom > hitBox_zumbi.top) {
+
                     tiro.parentNode.removeChild(tiro)
-                    zumbi.setAttribute('vida', zumbi.getAttribute('vida') - 1)
+
+                    zumbi.setAttribute('vida', zumbi.getAttribute('vida') - dano_arma)
                 }
             })
         })
     }
-}, 200)
+}, 180)
+
+
+/*
+    Coisas que não precisam atualizar muito rapido
+    ex: A pontuação
+*/
+setInterval(() => {
+
+    // Atualização dos pontos
+    const pontos_obj = document.querySelector('.pontuacao')
+
+    pontos_obj.textContent = `Pontos: ${pontuacao}`
+
+    // Reinicia caso o player morra
+    if (zumbisArray.length <= 0 && podeReiniciar) {
+        podeReiniciar = false
+        reiniciar()
+    }
+
+}, 1000)
