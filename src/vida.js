@@ -20,6 +20,6 @@ setInterval(() => {
     })
 
     if(player_vida <= 0){
-        // window.location.reload();
+        window.location.reload();
     }
 }, primeiro_zumbi_ataque)
