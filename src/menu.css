@@ -12,7 +12,7 @@
 body,
 html {
   height: 100%;
-  background: linear-gradient(130deg, black, rgb(37, 37, 37), black);
+  background: linear-gradient(130deg, black, rgb(37, 37, 37), black) no-repeat;
   color: rgba(0, 128, 0, 0.678);
   justify-content: center;
   display: flex;
@@ -42,7 +42,8 @@ a:hover {
 
 /* Sobre_menu */
 
-.sobre_Menu, #como_Jogar_Menu {
+.sobre_Menu,
+#como_Jogar_Menu {
   display: none;
   position: absolute;
   top: 0;
@@ -68,7 +69,8 @@ a:hover {
   font-size: 30px;
 }
 
-#fechar_Menu, #fechar_como_jogar {
+#fechar_Menu,
+#fechar_como_jogar {
   cursor: pointer;
   letter-spacing: 0;
   position: absolute;
@@ -82,35 +84,35 @@ a:hover {
 
 /* Como Jogar */
 
-#como_Jogar_Menu{
+#como_Jogar_Menu {
   line-height: 40px;
-  padding: 2% 4%;
+  padding: 1% 4%;
   overflow-y: auto;
 }
 
-#como_Jogar_Menu h1{
-  font-size:65px;
+#como_Jogar_Menu h1 {
+  font-size: 65px;
   margin: 0 0 40px;
 }
 
-#como_Jogar_Menu h2{
-  font-size:30px;
+#como_Jogar_Menu h2 {
+  font-size: 30px;
   margin: 50px 0 0;
   border-top: 2px solid green;
   padding-top: 20px;
 }
 
-#como_Jogar_Menu li{
+#como_Jogar_Menu li {
   font-family: sans-serif;
   text-align: left;
-  font-size:20px;
+  font-size: 20px;
   letter-spacing: 3px;
 }
 
-#como_Jogar_Menu p{
+#como_Jogar_Menu p {
   font-family: sans-serif;
   text-align: left;
-  font-size:25px;
+  font-size: 25px;
   letter-spacing: 3px;
   margin: 10px 0 0 100px;
 }
@@ -142,26 +144,26 @@ a:hover {
 }
 
 #fechar_Alerta {
-    background-color: black;
+  background-color: black;
 }
 
-.iframe{
+.iframe {
   position: absolute;
   bottom: 50px;
   width: 360px;
   height: 200px;
-  left: -50%;
+  left: -100%;
   animation: animacaoMusica 2s forwards;
 }
 
-iframe{
+iframe {
   border: 1px solid green;
   width: 100%;
   height: inherit;
   box-shadow: 0 0 50px black;
 }
 
-#numeroMusica{
+#numeroMusica {
   margin-bottom: 10px;
   margin-left: 10px;
   letter-spacing: 3px;
@@ -171,12 +173,70 @@ iframe{
 }
 
 @keyframes animacaoMusica {
-  from {left: -50%;}
-  to{left: -1px}
+  from {
+    left: -100%;
+  }
+  to {
+    left: -1px;
+  }
 }
 
 @media screen and (max-width: 900px) {
+  .iframe{
+    top: 35%;
+  }
+
+  .sobre_Menu {
+    padding: 0 2%;
+    overflow-y: auto;
+  }
+
+  .sobre_Menu h1 {
+    font-size: 25px;
+    margin-top: 70px;
+    margin-bottom: 5px;
+  }
+
+  .sobre_Menu p {
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  .sobre_Menu a {
+    line-height: 40px;
+  }
+
   #aviso_Mobile {
     display: block;
+  }
+
+  #aviso_Mobile h1 {
+    font-size: 50px;
+  }
+
+  #como_Jogar_Menu {
+    line-height: 20px;
+    padding: 1%;
+  }
+
+  #como_Jogar_Menu h1 {
+    display: none;
+  }
+
+  #como_Jogar_Menu h2 {
+    font-size: 25px;
+    margin: 50px 0 0;
+  }
+
+  #como_Jogar_Menu li {
+    font-size: 20px;
+    letter-spacing: 0;
+    margin: 15px 0;
+  }
+
+  #como_Jogar_Menu p {
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 10px 0 0 30px;
   }
 }
