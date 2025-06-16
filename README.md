@@ -7,7 +7,9 @@ O objetivo é explorar os limites dessas três linguagens, aprendendo na prátic
 
 ## 🎮 Sobre o jogo
 
-Você controla um personagem que precisa sobreviver a hordas de zumbis cada vez mais fortes. O jogo conta com diversas funcionalidades já implementadas:
+Você controla um personagem que precisa sobreviver a hordas de zumbis cada vez mais fortes. O jogo está sendo desenvolvido com HTML, CSS e JavaScript puro, e já conta com as seguintes funcionalidades:
+
+🔧 Funcionalidades implementadas
 
 - ✅ Movimentação do player
 - ✅ Sistema de vida do player
@@ -18,16 +20,23 @@ Você controla um personagem que precisa sobreviver a hordas de zumbis cada vez 
 - ✅ Limitação da área de movimentação
 - ✅ Suporte a teclas W, A, S, D e setas do teclado
 - ✅ Sistema de sprites e animações (temporários)
-- ✅ Zumbis rotacionam na direção do player (Math.atan2)
-- ✅ Nova lógica para verificação de teclas pressionadas
-- ✅ “Câmera” que acompanha o player pelo mapa
-- ✅ Colisão com paredes (player e inimigos)
+- ✅ Zumbis rotacionam em direção ao player (Math.atan2)
+- ✅ Nova lógica de detecção de teclas pressionadas
+- ✅ "Câmera" que acompanha o player pelo mapa
+- ✅ Sistema de colisão com paredes (player e inimigos)
 - ✅ Safe zone com porta funcional
 - ✅ Sistema de pontuação
 - ✅ Sistema de munição
 - ✅ Sistema de loja (use seus pontos para upgrades!)
-- ✅ Arma nova adicionada
-- ✅ Sistema de rounds — zumbis ficam mais fortes com o tempo
+- ✅ Novas armas adicionadas (+3 até agora)
+- ✅ Sistema de Rounds (dificuldade progressiva)
+- ✅ Sons e efeitos sonoros (tiros, impacto, ambiente)
+- ✅ Música de fundo
+- ✅ Efeito 3D falso no cenário
+- ✅ Mudanças visuais no cenário
+- ✅ Menu principal funcional
+- ✅ Tela de morte (Game Over)
+- ✅ Melhorias visuais no personagem
 
 
 ## 📷 Screenshot

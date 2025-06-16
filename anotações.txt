@@ -1,0 +1,8 @@
+- Sons
+- efeito 3D
+- mudanças no cenario
+- menu
+- + 2 armas
+- tela de morte
+- melhorias de personagem
+- musicas

@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-transform: capitalize;
+  font-family: Impact, sans-serif;
+  letter-spacing: 5px;
+  text-shadow: 0 0 50px black;
+  cursor: default;
+}
+
+body,
+html {
+  height: 100%;
+  background: linear-gradient(130deg, black, rgb(37, 37, 37), black);
+  color: rgba(0, 128, 0, 0.678);
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+h1 {
+  margin: 0 auto;
+  font-size: 100px;
+  margin-bottom: 100px;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  margin: 30px auto;
+  font-size: 40px;
+  color: inherit;
+  padding: 5px 20px;
+  border-radius: 15px;
+}
+
+a:hover {
+  background-color: black;
+}
+
+/* Sobre_menu */
+
+.sobre_Menu, #como_Jogar_Menu {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: inherit;
+  opacity: 0;
+  text-align: center;
+  padding: 10% 5% 0;
+  background-color: rgb(37, 37, 37);
+  color: rgb(207, 207, 207);
+  transition: 1s;
+}
+
+.sobre_Menu p,
+.sobre_Menu h1 {
+  text-shadow: 0 0 50px rgba(0, 128, 0, 0.678);
+  line-height: 50px;
+}
+
+.sobre_Menu p {
+  font-family: sans-serif;
+  letter-spacing: 3px;
+  font-size: 30px;
+}
+
+#fechar_Menu, #fechar_como_jogar {
+  cursor: pointer;
+  letter-spacing: 0;
+  position: absolute;
+  left: 30px;
+  top: 0;
+  background-color: red;
+  border-radius: 15px;
+  text-align: center;
+  padding: 0 10px;
+}
+
+/* Como Jogar */
+
+#como_Jogar_Menu{
+  line-height: 40px;
+  padding: 2% 4%;
+  overflow-y: auto;
+}
+
+#como_Jogar_Menu h1{
+  font-size:65px;
+  margin: 0 0 40px;
+}
+
+#como_Jogar_Menu h2{
+  font-size:30px;
+  margin: 50px 0 0;
+  border-top: 2px solid green;
+  padding-top: 20px;
+}
+
+#como_Jogar_Menu li{
+  font-family: sans-serif;
+  text-align: left;
+  font-size:20px;
+  letter-spacing: 3px;
+}
+
+#como_Jogar_Menu p{
+  font-family: sans-serif;
+  text-align: left;
+  font-size:25px;
+  letter-spacing: 3px;
+  margin: 10px 0 0 100px;
+}
+
+/* Alerta */
+
+#aviso_Mobile {
+  position: absolute;
+  display: none;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  padding: 10% 5%;
+  text-align: center;
+  color: white;
+  transition: 1s;
+}
+
+#aviso_Mobile h1,
+#aviso_Mobile h2 {
+  font-family: sans-serif;
+  color: black;
+}
+
+#aviso_Mobile h2 {
+  font-family: 35px;
+  margin-bottom: 20%;
+}
+
+#fechar_Alerta {
+    background-color: black;
+}
+
+.iframe{
+  position: absolute;
+  bottom: 50px;
+  width: 360px;
+  height: 200px;
+  left: -50%;
+  animation: animacaoMusica 2s forwards;
+}
+
+iframe{
+  border: 1px solid green;
+  width: 100%;
+  height: inherit;
+  box-shadow: 0 0 50px black;
+}
+
+#numeroMusica{
+  margin-bottom: 10px;
+  margin-left: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 19px;
+  text-shadow: 0 0 40px white;
+}
+
+@keyframes animacaoMusica {
+  from {left: -50%;}
+  to{left: -1px}
+}
+
+@media screen and (max-width: 900px) {
+  #aviso_Mobile {
+    display: block;
+  }
+}

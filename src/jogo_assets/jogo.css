@@ -1,0 +1,448 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+:root {
+  --corbase_1: white;
+  --lojaCorTema: rgba(24, 24, 24, 0.5);
+}
+
+html,
+body {
+  height: 100%;
+  background-color: black;
+}
+
+body {
+  overflow: hidden;
+  position: absolute;
+}
+
+/* ----- HUD e Camera ----- */
+
+.hud {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 10px;
+}
+
+.vidaLimite {
+  opacity: 1;
+  width: 30%;
+  height: 50px;
+  border: 2px solid white;
+  box-shadow: 0px 2px 10px black;
+  transition: 1s;
+}
+
+.vida {
+  opacity: 0.7;
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  transition: width 1s;
+}
+
+.hud h1,
+.hud .pontuacao {
+  position: absolute;
+  color: white;
+  text-shadow: -2px 4px black;
+  font-size: 35px;
+  left: 48%;
+  top: 10px;
+}
+
+.hud .pontuacao {
+  top: 6%;
+}
+
+.camera {
+  position: absolute;
+  height: 100dvh;
+  width: 100vw;
+  transform: translateX(-40%) translateY(-40%);
+  transition: 0.1s;
+}
+
+/* HUD > Munição */
+
+.hud .municao {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 150px;
+  background-color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  align-content: center;
+  box-shadow: 0 0 10px black;
+}
+
+.municao h1 {
+  position: relative;
+  margin-top: 10px;
+  font-size: 25px;
+  transform: translateX(-45%) translateY(-100%);
+}
+
+/* HUD > Loja */
+
+.lojaIcone {
+  box-shadow: 0 0 10px black;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 27%;
+  width: 100px;
+  height: 100px;
+  font-size: 70px;
+  text-align: center;
+  align-content: center;
+  background-color: var(--lojaCorTema);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.lojaIcone:hover {
+  background-color: var(--corbase_1);
+  color: black;
+}
+
+.lojaBackground {
+  text-transform: capitalize;
+  position: absolute;
+  background-color: var(--lojaCorTema);
+  box-shadow: -5px 0 20px black;
+  right: -50%;
+  /* right: 0; */
+  top: 27%;
+  margin-top: 100px;
+  width: 400px;
+  height: 600px;
+  transition: right 1s;
+  letter-spacing: 1.3px;
+  line-height: 1.2;
+}
+
+.pagina_municoes,
+.pagina_melhorias {
+  display: none;
+}
+
+.container {
+  cursor: pointer;
+  display: flex;
+  border-top: 2px solid var(--corbase_1);
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.container:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.container img {
+  width: 25%;
+  margin: 0 20px;
+  filter: drop-shadow(-10px 5px 7px rgba(0, 0, 0, 0.7));
+}
+
+.descricao {
+  text-align: center;
+  margin-left: 40px;
+  text-shadow: -5px 5px 20px black;
+}
+
+.descricao .nome {
+  margin-bottom: 10px;
+}
+
+.categorias_loja {
+  position: absolute;
+  display: flex;
+  background-color: var(--lojaCorTema);
+  width: 75%;
+  min-height: 50px;
+  bottom: 100%;
+}
+
+.armas_aba {
+  background: url("https://cdn-icons-png.freepik.com/512/7848/7848666.png?ga=GA1.1.1034927597.1749581597")
+    bottom / contain no-repeat;
+}
+
+.municoes_aba {
+  background: url("https://cdn-icons-png.freepik.com/512/884/884551.png?ga=GA1.1.1034927597.1749581597")
+    bottom / contain no-repeat;
+}
+
+.melhorias_aba {
+  background: url("https://cdn-icons-png.freepik.com/512/5949/5949089.png?ga=GA1.1.1034927597.1749581597")
+    bottom / contain no-repeat;
+}
+
+.aba {
+  cursor: pointer;
+  width: 100px;
+  height: inherit;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin: 0 5px 0 0;
+  border-radius: 20px 20px 0 0;
+}
+
+.aba:hover,
+.selecionado {
+  background-color: var(--corbase_1);
+}
+
+/* Musica Showcase */
+
+.musicaVitrine {
+  position: absolute;
+  display: flex;
+  left: -50%;
+  top: 50%;
+  width: 300px;
+  height: 100px;
+  font-size: 23px;
+  padding-left: 10px;
+  color: rgb(214, 214, 214);
+  background-color: var(--lojaCorTema);
+  box-shadow: -3px 0 25px black;
+  align-items: center;
+  transition: left 1s;
+}
+
+.show{
+  left: 0;
+}
+
+.textoMusica {
+  text-align: center;
+  align-content: center;
+  width: 70%;
+}
+
+#musicaNome {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+#musicaImagem {
+  width: 100px;
+  height: 95%;
+  border-radius: 50%;
+  background: url("https://yt3.googleusercontent.com/2g6nvgNJQFSqvG3ALZOZqryd_xfxLHw9KE2KrwCVH1yt3dj5OdQ1_c9frKX-UQeaQHL9opsr=s160-c-k-c0x00ffffff-no-rj")
+    center / cover no-repeat;
+}
+
+/* ----- Personagens ----- */
+
+.player,
+.zumbi {
+  z-index: 2;
+  position: absolute;
+  transition: 0.1s;
+  rotate: 0deg;
+  transform-origin: center center;
+}
+
+.player {
+  width: 100px;
+  height: 80px;
+  top: 100px;
+  left: 100px;
+  background: url("assets/player/player_parado_pistola.webp") center / contain
+    no-repeat;
+  filter: drop-shadow(-5px 2px 5px rgba(0, 0, 0, 0.5));
+}
+
+.zumbi {
+  width: 80px;
+  height: 80px;
+  background-color: green;
+  top: inherit;
+  left: 50px;
+  transition: 0.3s;
+  background: url("assets/zumbi_andando.webp") center / contain no-repeat;
+  filter: drop-shadow(-3px 0px 5px rgba(0, 0, 0, 0.5));
+  transform: scaleX(-1);
+}
+
+.tiro {
+  z-index: 1;
+  position: absolute;
+  transition: 0.3s;
+  rotate: 0deg;
+  width: 15px;
+  height: 5px;
+  background-color: yellow;
+}
+
+/* ----- Mapa ----- */
+
+.mapa {
+  background: url("assets/grama_textura.webp") center;
+  border: 1px solid black;
+  position: absolute;
+}
+
+/* Mapa > Inicio */
+
+.inicio {
+  position: relative;
+  width: 1000px;
+  height: 500px;
+  text-align: center;
+  align-content: center;
+  color: black;
+  font-weight: bolder;
+}
+
+.piso {
+  position: absolute;
+  top: 0;
+  background: url("assets/piso_textura.webp") left;
+  width: inherit;
+  height: inherit;
+  z-index: 1;
+}
+
+.paredeVertical {
+  position: absolute;
+  background-color: black;
+  width: 20px;
+  height: inherit;
+  left: 100%;
+  top: 0;
+}
+
+.paredeHorizontal {
+  position: absolute;
+  background-color: black;
+  width: 102%;
+  height: 20px;
+  top: 100%;
+}
+
+.porta_frame {
+  position: absolute;
+  background: url("assets/piso_textura.webp") left;
+  width: 150px;
+  height: 20px;
+  top: 100%;
+  left: 50%;
+  z-index: 1;
+}
+
+.porta {
+  transition: rotate 1s;
+  position: inherit;
+  top: 50%;
+  right: 95%;
+  width: 20px;
+  height: 155px;
+  background: url("assets/detalhe_porta.webp") center / cover no-repeat;
+  transform-origin: top;
+  rotate: 0deg;
+}
+
+.telhado_inicio {
+  position: absolute;
+  top: 0;
+  width: 1050px;
+  height: 550px;
+  background: url("assets/telhado_textura.webp") center / contain repeat;
+  filter: blur(10px);
+  opacity: 0;
+  transition: 0.7s;
+  z-index: 3;
+}
+
+/* Cenario */
+
+.cenario_um {
+  background-color: rgb(194, 193, 193);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  width: 1000px;
+  height: 700px;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  filter: drop-shadow(0 0 15px black);
+}
+
+.cenario_dois {
+  position: absolute;
+  background: url("assets/bombero.webp") center / contain;
+  height: 500px;
+  width: 100%;
+  top: 100%;
+  transform: translateY(-100%) scale(-1);
+  filter: drop-shadow(0 0 25px black);
+}
+
+.rua {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 350px;
+  background: url("assets/rua_textura.webp") center / contain;
+  box-shadow: 5px 0 30px black;
+}
+
+.telhado_dois {
+  position: absolute;
+  background-color: rgb(0, 13, 29);
+  width: 102%;
+  height: 500px;
+  left: -30px;
+  bottom: -100px;
+  transition: bottom 0.3s;
+  background: url("assets/detalhe_telhado_cinza.webp") left / contain;
+  filter: blur(5px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.telhado_um {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1100px;
+  height: 750px;
+  z-index: 5;
+  background: url("assets/telhado_detalhado.webp") center / cover no-repeat;
+  background-color: grey;
+  filter: blur(5px);
+  transition: 0.1s;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.6);
+}
+
+.tela_de_morte {
+  position: fixed;
+  opacity: 0;
+  display: none;
+  color: white;
+  background-color: black;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 30;
+  text-align: center;
+  align-content: center;
+  transition: 1s;
+}
+
+.tela_de_morte h1 {
+  margin: 30px;
+  font-size: 50px;
+}
