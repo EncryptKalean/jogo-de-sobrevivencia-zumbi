@@ -40,7 +40,7 @@ setInterval(() => {
 
             setInterval(() => {
                 if (contagem === 0) {
-                    window.location.assign('../menu.html');
+                    window.location.assign('../index.html');
                 }
 
                 contagem--
