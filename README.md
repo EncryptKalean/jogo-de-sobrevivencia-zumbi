@@ -50,6 +50,8 @@ W / A / S / D ou Setas – Movimentação
 
 Espaço ou Enter – Disparo
 
+R - Recarregar
+
 
 ## 🚧 Status do projeto
 
